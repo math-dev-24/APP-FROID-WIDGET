@@ -26,8 +26,8 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  min-width: 500px;
+  padding: 3px 10px;
 }
 
 h1 {
@@ -65,4 +65,66 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+
+.text-center {
+  align-items: center;
+}
+
+.text-xl {
+  font-size: 2em;
+}
+
+.italic {
+  font-style: italic;
+}
+.w-100 {
+  width: 100%;
+}
+
+.ruler {
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px 10px;
+  label {
+    display: grid;
+    grid-row: inherit;
+    align-items: center;
+    grid-template-columns: repeat(2, 200px);
+    margin: 10px 10px;
+    span {
+      text-align: end;
+      margin-right: 2px;
+    }
+    input, select {
+      padding: 7px 3px;
+      width: 85%;
+      margin: 0 auto;
+    }
+  }
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.my-4 {
+  margin: 0 7px;
 }

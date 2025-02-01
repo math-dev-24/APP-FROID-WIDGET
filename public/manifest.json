@@ -1,10 +1,15 @@
 {
-    "manifest_version": 3,
-    "name": "React Chrome Extension",
-    "version": "1.0.0",
-    "description": "A simple React app as a Chrome extension",
-    "action": {
-      "default_popup": "index.html"
-    },
-    "permissions": []
+  "manifest_version": 3,
+  "name": "App Froid",
+  "version": "1.0.0",
+  "description": "App Froid est dans votre navigateur. Plusieurs outils à portée de clic !",
+  "icons": {
+    "16": "logo.png",
+    "48": "logo.png",
+    "128": "logo.png"
+  },
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "logo.png"
   }
+}
