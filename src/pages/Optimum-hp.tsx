@@ -31,56 +31,56 @@ export default function Optimum() {
 
   return (
     <div className="flex flex-col ruler">
-      <label>
-        <span>Puissance :</span>
+      <div className="inputForm">
+        <div>Puissance :</div>
         <input
           type="number"
           name="power"
           value={formValues.power}
           onChange={handleChange}
         />
-      </label>
-      <label>
-        <span>Température saturante d'évaporation :</span>
+      </div>
+      <div className="inputForm">
+        <div>Température saturante d'évaporation :</div>
         <input 
             type="number"
             name="t_evp"
             value={formValues.t_evp}
             onChange={handleChange}
         />
-      </label>
+      </div>
 
-      <label>
-        <span>Surchauffe :</span>
+      <div className="inputForm">
+        <div>Surchauffe :</div>
         <input 
             type="number"
             name="overheat"
             value={formValues.overheat}
             onChange={handleChange}
         />
-      </label>
+      </div>
 
-      <label>
-        <span>Température sortie Gaz-cooler :</span>
+      <div className="inputForm">
+        <div>Température sortie Gaz-cooler :</div>
         <input 
             type="number"
             name="t_in_det"
             value={formValues.t_in_det}
             onChange={handleChange}
         />
-      </label>
+      </div>
 
-      <label>
-        <span>Rendement effectif :</span>
+      <div className="inputForm">
+        <div>Rendement effectif :</div>
         <input 
             type="number"
             name="rend_eff"
             value={formValues.rend_eff}
             onChange={handleChange}
         />
-      </label>
+      </div>
       <button onClick={goCalc} disabled={loading}>{loading ? "Chargement..." : "Calculer"}</button>
-      {result && <div className="text-xl font-bold my-4">{result}</div>}
+      {result && <div className="text-xl">{result}</div>}
     </div>
   );
 }

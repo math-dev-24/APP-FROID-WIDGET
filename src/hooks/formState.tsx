@@ -12,6 +12,12 @@ export default function useForm(initialValues: { [key: string]: any }) {
         [name]: value,
       }));
     };
+
+    const setValueByKey = (key: string, value: string|number) => {
+      setFormValues((prevValues) => ({
+        ...prevValues, [key]: value
+      }))
+    }
   
-    return { formValues, handleChange, setFormValues };
+    return { formValues, handleChange, setFormValues, setValueByKey };
   }
