@@ -28,6 +28,8 @@ export default function Header() {
         </div>
         <NavLink to="/">Accueil</NavLink>
         <NavLink to="/ruler" >Réglette frigorifique</NavLink>
+        <NavLink to="/azote">Test Azote</NavLink>
+        <NavLink to="/desp">Calculatrice DESP</NavLink>
         <NavLink to="/opti-hp">Pression optimum CO2 transcritique</NavLink>
       </nav>
     </header>

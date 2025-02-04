@@ -1,10 +1,13 @@
 import { useState } from "react";
-import { DATA_FLUIDS, FluidsInterface } from "../data/fluid";
+import {DATA_FLUIDS} from "../data/fluid";
 import useForm from "../hooks/formState";
 import SelectCustom from "../components/SelectCustom";
+import SelectData from "../types/selectType";
+import { FluidsInterface } from "../types/fluidType";
+
 
 export default function App() {
-  const options: { key: string; label: string }[] = [
+  const options: SelectData[] = [
     { key: "T", label: "Température (°C)" },
     { key: "P", label: "Pression absolue (bar)" },
     { key: "D", label: "Densité (kg/m3)" },
@@ -49,9 +52,7 @@ export default function App() {
     }
   };
 
-  const fluideLabel: { key: string; label: string }[] = DATA_FLUIDS.map((f) => {
-    return { key: f.ref_name, label: f.name };
-  });
+  const fluideLabel: SelectData[] = DATA_FLUIDS.map((f) => { return { key: f.ref_name, label: f.name }; });
 
   return (
     <div className="flex flex-col ruler">

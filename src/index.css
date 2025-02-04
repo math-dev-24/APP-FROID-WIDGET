@@ -17,6 +17,7 @@ header {
   nav {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
     .active-nav {
       color: white;
       text-decoration: underline;
@@ -128,16 +129,11 @@ button:focus-visible {
   }
 }
 
-
-
-
-
-
-
 .custom_dropdown {
   margin: 5px 0;
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: 5px;
   div {
     cursor: pointer;

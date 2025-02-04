@@ -1,10 +1,11 @@
 import { useState } from "react"
+import SelectData from "../types/selectType";
 
 interface SelectProp {
     label: string,
     value: string,
     setValue: (value: string) => void,
-    options: {key: string, label: string}[]
+    options: SelectData[]
 }
 
 
