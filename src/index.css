@@ -147,12 +147,12 @@ button:focus-visible {
   .options {
     border: 2px solid #818CF8;
     width: 100%;
-    height: 250px;
+    max-height: 250px;
     position: absolute;
-    bottom: -250px;
+    top: 100%;
     z-index: 1;
     background-color: #15222e;
-    overflow-y: scroll;
+    overflow-y: auto;
     ul {
       display: flex;
       flex-direction: column;
@@ -169,7 +169,7 @@ button:focus-visible {
         }
       }
       .selected {
-        background-color: #1a1a1a;
+        background-color: #000000;
       }
     }
   }

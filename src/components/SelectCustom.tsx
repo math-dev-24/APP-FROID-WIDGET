@@ -29,7 +29,7 @@ export default function SelectCustom({label, value, setValue, options} : SelectP
                 show ?
                 <div className="options">
                     <ul>
-                        {options.map(o => <li key={o.key} className={value == o.key ? "selected" : ""} onClick={() => handleChange(o.key)}>{o.label}</li>)}
+                        {options.map(o => <li key={o.key} className={value == o.label ? "selected" : ""} onClick={() => handleChange(o.key)}>{o.label}</li>)}
                     </ul>
                 </div>
                 :
