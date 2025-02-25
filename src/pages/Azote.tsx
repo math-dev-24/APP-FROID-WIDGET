@@ -38,7 +38,7 @@ export default function Azote() {
         setValue={(newVal: number) => setValueByKey("t_final", newVal)}
       />
     
-      {result && <div className="font-bold text-xl my-4">{result}</div>}
+      {result && <div className="result font-bold text-xl my-4">{result}</div>}
     </main>
   );
 }

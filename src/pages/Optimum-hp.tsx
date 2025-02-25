@@ -80,7 +80,7 @@ export default function Optimum() {
         />
       </div>
       <button onClick={goCalc} disabled={loading}>{loading ? "Chargement..." : "Calculer"}</button>
-      {result && <div className="text-xl">{result}</div>}
+      {result && <div className="result text-xl">{result}</div>}
     </div>
   );
 }

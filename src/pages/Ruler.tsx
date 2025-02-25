@@ -109,7 +109,7 @@ export default function App() {
         {loading ? "Chargement..." : "Calculer"}
       </button>
 
-      {result && <div className="font-bold text-xl my-4">{result}</div>}
+      {result && <div className="result font-bold text-xl my-4">{result}</div>}
     </div>
   );
 }

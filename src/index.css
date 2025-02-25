@@ -48,13 +48,16 @@ button {
   background-color: #ffffff;
   cursor: pointer;
   width: 50%;
-  margin: auto;
+  margin: 10px auto;
   transition: all 0.35s ease;
+  padding: 0.7em 15px;
+  font-weight: bold;
+  font-size: 1.1em;
 }
 button:hover {
   border-color: #646cff;
   background-color: #555cdf;
-  transform: scale(1.02,1);
+  color: white;
 }
 button:focus,
 button:focus-visible {
@@ -172,5 +175,18 @@ button:focus-visible {
         background-color: #000000;
       }
     }
+  }
+}
+
+
+.result {
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 1em 2em;
+  margin-top: 10px;
+  img {
+    margin: auto;
+    width: 80%;
+    display: block;
   }
 }

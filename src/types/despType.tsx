@@ -21,3 +21,8 @@ export const dataNature: SelectData[] = [
   {key: ListNature.GAZ, label: "Gaz"},
   {key: ListNature.LIQUIDE, label: "Liquide"}
 ]
+
+export const dataDanger: SelectData[] = [
+  {key: "G1", label: "G1"},
+  {key: "G2", label: "G2"}
+]
