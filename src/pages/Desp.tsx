@@ -51,7 +51,7 @@ export default function Desp() {
   }, [formValues]);
 
   return (
-    <main className="ruler">
+    <main className="ruler flex flex-col gap-1">
       <SelectCustom
         value={dataNature.filter((d) => d.label == formValues.nature)[0].label}
         label="Nature du fluide :"

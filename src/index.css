@@ -1,74 +1,157 @@
 body {
-  margin: 0;
+  margin: 5px;
   display: flex;
-  min-width: 500px;
-  min-height: 550px;
-  padding: 3px 10px;
-  background-color: #162431;
-  color: white;
+  position: relative;
+  width: 600px;
+  height: 650px;
+  padding: 5px 10px;
+  background-color: #121212;
+  color: #e0e0e0;
+  overflow: scroll;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: 1.8em;
+  line-height: 1;
+  margin: 0;
+  font-weight: 500;
 }
+
 
 header {
-  nav {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    .active-nav {
-      color: white;
-      text-decoration: underline;
-    }
-  }
+  width: 100%;
+  background-color: #1a1a1a;
 }
 
-a {
+.header-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: start;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.app-title {
+  margin-left: 12px;
+  font-size: 1.2rem;
   font-weight: 500;
-  color: #7a80ee;
-  text-decoration: inherit;
+  color: #60a5fa;
+  letter-spacing: 0.5px;
+}
+
+
+/* Navigation desktop */
+header nav {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.external-link-container {
+  margin-right: 18px;
+  position: relative;
+}
+
+.external-link-container:after {
+  content: "";
+  position: absolute;
+  right: -9px;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background-color: #333;
+}
+
+.external-link {
+  color: #60a5fa;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.7);
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}
+
+.nav-link:not(.active-nav):hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.active-nav {
+  background: #3b82f6;
+}
+
+/* Lien global styles */
+a {
+  font-weight: 400;
+  color: #60a5fa;
+  text-decoration: none;
   transition: all 0.2s ease;
 }
 
 a:hover {
-  text-decoration: underline;
+  color: #93c5fd;
 }
 
-
+/* Button styles */
 button {
   display: block;
-  border-radius: 0.2em;
-  border: 1px solid transparent;
-  padding: 0.2em 1.2em;
-  font-size: 1em;
+  border-radius: 4px;
+  border: none;
+  padding: 0.7em 15px;
+  font-size: 0.95em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #ffffff;
+  background-color: #60a5fa;
+  color: #fff;
   cursor: pointer;
   width: 50%;
-  margin: 10px auto;
-  transition: all 0.35s ease;
-  padding: 0.7em 15px;
-  font-weight: bold;
-  font-size: 1.1em;
+  margin: 12px auto;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
 button:hover {
-  border-color: #646cff;
-  background-color: #555cdf;
-  color: white;
+  background-color: #3b82f6;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
+
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.5);
 }
 
-
-
+/* Utility classes */
 .flex {
   display: flex;
 }
+
 .flex-col {
   flex-direction: column;
 }
@@ -86,10 +169,10 @@ button:focus-visible {
 .italic {
   font-style: italic;
 }
+
 .w-100 {
   width: 100%;
 }
-
 
 .font-bold {
   font-weight: bold;
@@ -106,87 +189,167 @@ button:focus-visible {
 .my-4 {
   margin: 0 7px;
 }
+
 .cursor-pointer {
   cursor: pointer;
 }
-.ruler {
-  border: 1px solid rgb(180, 180, 180);
-  padding: 1em;
-  margin: 1em 0;
-  border-radius: 0.4em;
-}
 
+/* Component styles */
+.ruler {
+  background-color: #1e1e1e;
+  padding: 1.25em;
+  margin: 1.25em 0;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.grid {
+  display: grid;
+}
+.grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.gap-1 {
+  gap: 1em;
+}
 
 .inputForm {
-  margin: 5px 0;
+  margin: 12px 0;
   display: flex;
   flex-direction: column;
-  grid-area: 5px;
-  input[type=number] {
-    font-weight: bold;
-    padding: 5px 10px;
-    border: 2px #818CF8 solid;
-    border-radius: 5px;
-    background: transparent;
-    color: white;
-  }
+  gap: 8px;
 }
 
-.custom_dropdown {
-  margin: 5px 0;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 5px;
-  div {
-    cursor: pointer;
-  }
-  position: relative;
-  .value {
-    border: 2px solid #818CF8;
-    border-radius: 5px;
-    padding: 1px 1.4em;
-  }
-  .options {
-    border: 2px solid #818CF8;
-    width: 100%;
-    max-height: 250px;
-    position: absolute;
-    top: 100%;
-    z-index: 1;
-    background-color: #15222e;
-    overflow-y: auto;
-    ul {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2em;
-      list-style: none;
-      margin: 0px;
-      padding: 0px;
-      li {
-        margin: 0;
-        cursor: pointer;
-        padding: 0.5px 10px;
-        &:hover {
-          background-color: #426688;
-        }
-      }
-      .selected {
-        background-color: #000000;
-      }
-    }
-  }
+.inputForm input[type=number] {
+  font-weight: 500;
+  padding: 10px 12px;
+  border: 1px solid rgba(96, 165, 250, 0.4);
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.inputForm input[type=number]:focus {
+  border-color: #60a5fa;
+  background-color: rgba(255, 255, 255, 0.07);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.25);
 }
 
 
 .result {
-  border: 1px solid white;
-  border-radius: 5px;
-  padding: 1em 2em;
-  margin-top: 10px;
-  img {
-    margin: auto;
-    width: 80%;
-    display: block;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  padding: 1.5em 2em;
+  margin-top: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.result img {
+  margin: auto;
+  width: 80%;
+  display: block;
+  border-radius: 4px;
+}
+
+/* Media queries pour la responsivité */
+@media (max-width: 768px) {
+
+  header {
+    padding: 12px 16px;
   }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  .app-title {
+    font-size: 1.1rem;
+  }
+
+  button {
+    width: 80%;
+  }
+}
+
+
+
+.custom_dropdown {
+  margin: 12px 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+  position: relative;
+}
+
+.custom_dropdown div {
+  cursor: pointer;
+}
+
+.custom_dropdown .value {
+  border: 1px solid rgba(96, 165, 250, 0.4);
+  border-radius: 6px;
+  padding: 10px 12px;
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+}
+
+.custom_dropdown .value:hover {
+  border-color: #60a5fa;
+  background-color: rgba(255, 255, 255, 0.07);
+}
+
+.custom_dropdown .options {
+  border: 1px solid #60a5fa;
+  border-radius: 6px;
+  width: 100%;
+  max-height: 250px;
+  position: absolute;
+  top: calc(100% + 4px);
+  z-index: 10;
+  background-color: #1a1a1a;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.custom_dropdown .options ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 4px;
+}
+
+.custom_dropdown .options ul li {
+  margin: 0;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.15s ease;
+}
+
+.custom_dropdown .options ul li:hover {
+  background-color: rgba(96, 165, 250, 0.15);
+}
+
+.custom_dropdown .options ul .selected {
+  background-color: rgba(96, 165, 250, 0.3);
+  color: white;
+}
+
+.result {
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  padding: 1.5em 2em;
+  margin-top: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.result img {
+  margin: auto;
+  width: 80%;
+  display: block;
+  border-radius: 4px;
 }
