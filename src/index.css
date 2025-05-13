@@ -212,6 +212,9 @@ button:focus-visible {
 .gap-1 {
   gap: 1em;
 }
+.gap-0-5 {
+gap: 0.5em;
+}
 
 .inputForm {
   margin: 12px 0;

@@ -1,9 +1,8 @@
-import { useState } from "react";
 import {DATA_FLUIDS} from "../data/fluid";
 import useForm from "../hooks/formState";
 import SelectCustom from "../components/SelectCustom";
 import SelectData from "../types/selectType";
-import { FluidsInterface } from "../types/fluidType";
+import useRuler from "../hooks/UseRuler.tsx";
 
 
 export default function App() {
@@ -15,10 +14,6 @@ export default function App() {
     { key: "H", label: "Enthalpie (kj/kg)" },
   ];
 
-  const [result, setResult] = useState<string>("-");
-  const [loading, setLoading] = useState<boolean>(false);
-  const [infoFluid, setInfoFluid] = useState<string>("GWP:1300 - G1:A1");
-
   const { formValues, handleChange, setValueByKey } = useForm({
     fluid: "R134a",
     car_need: "T",
@@ -28,29 +23,18 @@ export default function App() {
     val_2: 100,
   });
 
-  const fluidChange = (new_fluid: string) => {
-    const fluid: FluidsInterface = DATA_FLUIDS.filter(
-      (f) => f.ref_name == new_fluid
-    )[0];
-    setInfoFluid(`GWP:${fluid.gwp} - G${fluid.group}:${fluid.classification}`);
-    setValueByKey("fluid", new_fluid);
-  };
+  const {inLoading, infoFluid, setInfoFluid, result, getResult, error} = useRuler()
 
-  const fetchAPI = async () => {
-    setLoading(true);
-    const queryParams = new URLSearchParams(formValues).toString();
-    try {
-      const response = await fetch(
-        `https://mathieub.pythonanywhere.com/v2/ruler?${queryParams}`
-      );
-      const data = await response.json();
-      setResult(`Résultat : ${data.result}`);
-      setLoading(false);
-    } catch (e) {
-      setResult("Une erreur est survenu");
-      setLoading(false);
+    const handleClick = async () => {
+      await getResult({
+          fluid: formValues.fluid,
+          car_need: formValues.car_need,
+          car_1: formValues.car_1,
+          val_1: formValues.val_1,
+          car_2: formValues.car_2,
+          val_2: formValues.val_2,
+      });
     }
-  };
 
   const fluideLabel: SelectData[] = DATA_FLUIDS.map((f) => { return { key: f.ref_name, label: f.name }; });
 
@@ -63,7 +47,7 @@ export default function App() {
                         DATA_FLUIDS.filter((f) => f.ref_name == formValues.fluid)[0].name
                     }
                     label="Fluide :"
-                    setValue={fluidChange}
+                    setValue={setInfoFluid}
                     options={fluideLabel}
                 />
                 <div className="text-center italic w-100">{infoFluid}</div>
@@ -108,11 +92,13 @@ export default function App() {
                 />
             </div>
         </div>
-        <button onClick={fetchAPI} disabled={loading}>
-            {loading ? "Chargement..." : "Calculer"}
+        <button onClick={handleClick} disabled={inLoading}>
+            {inLoading ? "Chargement..." : "Calculer"}
         </button>
 
-        {result && <div className="result font-bold text-xl my-4">{result}</div>}
+        {(error) && <div className="text-red-500 font-bold text-xl my-4">{error}</div>}
+
+        { result && <div className="result font-bold text-xl my-4">{result}</div>}
     </>
   );
 }

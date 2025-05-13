@@ -51,7 +51,7 @@ export default function Desp() {
   }, [formValues]);
 
   return (
-    <main className="ruler flex flex-col gap-1">
+    <main className="ruler flex flex-col">
       <SelectCustom
         value={dataNature.filter((d) => d.label == formValues.nature)[0].label}
         label="Nature du fluide :"
@@ -91,7 +91,7 @@ export default function Desp() {
       )}
       <div className="result">
         {result && <div className="font-bold text-xl my-4">{result}</div>}
-        {result && <img src={urlImg} />}
+        {result && <img src={urlImg} alt={urlImg} />}
       </div>
 
     </main>
