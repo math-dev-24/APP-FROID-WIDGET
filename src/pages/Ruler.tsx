@@ -27,12 +27,12 @@ export default function App() {
 
     const handleClick = async () => {
       await getResult({
-          fluid: formValues.fluid,
-          car_need: formValues.car_need,
-          car_1: formValues.car_1,
-          val_1: formValues.val_1,
-          car_2: formValues.car_2,
-          val_2: formValues.val_2,
+          fluid: formValues.fluid as string,
+          car_need: formValues.car_need as string,
+          car_1: formValues.car_1 as string,
+          val_1: formValues.val_1 as number,
+          car_2: formValues.car_2 as string,
+          val_2: formValues.val_2 as number,
       });
     }
 
@@ -92,13 +92,104 @@ export default function App() {
                 />
             </div>
         </div>
-        <button onClick={handleClick} disabled={inLoading}>
+        <button onClick={handleClick} disabled={inLoading} className="w-1/3 m-auto my-2">
             {inLoading ? "Chargement..." : "Calculer"}
         </button>
 
-        {(error) && <div className="text-red-500 font-bold text-xl my-4">{error}</div>}
+        {/* Section Erreur */}
+        {error && (
+          <div className="result" style={{
+            backgroundColor: '#dc2626',
+            color: 'white',
+            border: '1px solid #b91c1c'
+          }}>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              marginBottom: '8px'
+            }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="15" y1="9" x2="9" y2="15"/>
+                <line x1="9" y1="9" x2="15" y2="15"/>
+              </svg>
+              <span style={{ fontWeight: '600' }}>Erreur</span>
+            </div>
+            <p style={{ margin: 0 }}>{error}</p>
+          </div>
+        )}
 
-        { result && <div className="result font-bold text-xl my-4">{result}</div>}
+        {/* Section Résultat */}
+        {result && (
+          <div className="result">
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              marginBottom: '16px',
+              paddingBottom: '12px',
+              borderBottom: '1px solid #333'
+            }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span style={{ 
+                fontSize: '1.125rem', 
+                fontWeight: '600',
+                color: '#60a5fa'
+              }}>
+                Résultat du calcul
+              </span>
+            </div>
+            
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'auto 1fr',
+              gap: '12px',
+              alignItems: 'center'
+            }}>
+              <div style={{
+                width: '8px',
+                height: '8px',
+                backgroundColor: '#10b981',
+                borderRadius: '50%'
+              }}></div>
+              
+              <div style={{
+                fontSize: '1.125rem',
+                fontWeight: '500',
+                color: '#e0e0e0',
+                lineHeight: '1.5'
+              }}>
+                {result}
+              </div>
+            </div>
+            
+            {/* Info supplémentaire */}
+            <div style={{
+              marginTop: '16px',
+              padding: '12px',
+              backgroundColor: '#1a1a1a',
+              borderRadius: '6px',
+              border: '1px solid #333'
+            }}>
+              <div style={{
+                fontSize: '0.875rem',
+                color: '#9ca3af',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px'
+              }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="m9 12 2 2 4-4"/>
+                </svg>
+                Calcul effectué avec succès
+              </div>
+            </div>
+          </div>
+        )}
     </>
   );
 }

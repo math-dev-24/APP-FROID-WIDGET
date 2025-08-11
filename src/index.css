@@ -1,219 +1,74 @@
+/* Base styles pour l'extension Chrome */
 body {
-  margin: 5px;
-  display: flex;
-  position: relative;
+  margin: 0;
   width: 600px;
   height: 650px;
-  padding: 5px 10px;
+  overflow: hidden;
   background-color: #121212;
   color: #e0e0e0;
-  overflow: scroll;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 }
 
-h1 {
-  font-size: 1.8em;
-  line-height: 1;
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  line-height: 1.25;
   margin: 0;
-  font-weight: 500;
+  color: #e0e0e0;
 }
 
+h1 { font-size: 1.5rem; }
+h2 { font-size: 1.25rem; }
+h3 { font-size: 1.125rem; }
 
-header {
-  width: 100%;
-  background-color: #1a1a1a;
-}
-
-.header-container {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: start;
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-}
-
-.app-title {
-  margin-left: 12px;
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: #60a5fa;
-  letter-spacing: 0.5px;
-}
-
-
-/* Navigation desktop */
-header nav {
-  display: flex;
-  gap: 0.8rem;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.desktop-nav {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.external-link-container {
-  margin-right: 18px;
-  position: relative;
-}
-
-.external-link-container:after {
-  content: "";
-  position: absolute;
-  right: -9px;
-  top: 20%;
-  height: 60%;
-  width: 1px;
-  background-color: #333;
-}
-
-.external-link {
-  color: #60a5fa;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 0.9rem;
-  opacity: 0.9;
-}
-
-.nav-link {
-  color: rgba(255, 255, 255, 0.7);
-  padding: 8px 12px;
-  border-radius: 4px;
-  transition: all 0.2s ease;
-  font-size: 0.9rem;
-  font-weight: 400;
-  letter-spacing: 0.3px;
-}
-
-.nav-link:not(.active-nav):hover {
-  background-color: rgba(255, 255, 255, 0.05);
-  color: white;
-}
-
-.active-nav {
-  background: #3b82f6;
-}
-
-/* Lien global styles */
+/* Liens */
 a {
-  font-weight: 400;
   color: #60a5fa;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 a:hover {
   color: #93c5fd;
 }
 
-/* Button styles */
+/* Boutons */
 button {
-  display: block;
-  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
   border: none;
-  padding: 0.7em 15px;
-  font-size: 0.95em;
+  padding: 8px 16px;
+  font-size: 0.875rem;
   font-weight: 500;
   font-family: inherit;
-  background-color: #60a5fa;
-  color: #fff;
+  background-color: #3b82f6;
+  color: white;
   cursor: pointer;
-  width: 50%;
-  margin: 12px auto;
   transition: all 0.2s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
-  background-color: #3b82f6;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  background-color: #2563eb;
 }
 
-button:focus,
-button:focus-visible {
+button:focus {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.5);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
 }
 
-/* Utility classes */
-.flex {
-  display: flex;
-}
-
-.flex-col {
-  flex-direction: column;
-}
-
-.text-center {
-  align-items: center;
-}
-
-.text-xl {
-  font-size: 1.4em;
-  text-align: center;
-  margin-top: 10px;
-}
-
-.italic {
-  font-style: italic;
-}
-
-.w-100 {
-  width: 100%;
-}
-
-.font-bold {
-  font-weight: bold;
-}
-
-.justify-center {
-  justify-content: center;
-}
-
-.align-center {
-  align-items: center;
-}
-
-.my-4 {
-  margin: 0 7px;
-}
-
-.cursor-pointer {
-  cursor: pointer;
-}
-
-/* Component styles */
+/* Composants spécifiques */
 .ruler {
   background-color: #1e1e1e;
-  padding: 1.25em;
-  margin: 1.25em 0;
-  width: 100%;
+  border: 1px solid #333;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-.grid {
-  display: grid;
-}
-.grid-cols-2 {
-  grid-template-columns: repeat(2, 1fr);
-}
-.gap-1 {
-  gap: 1em;
-}
-.gap-0-5 {
-gap: 0.5em;
+  padding: 1.25rem;
+  margin: 0;
 }
 
 .inputForm {
@@ -223,30 +78,35 @@ gap: 0.5em;
   gap: 8px;
 }
 
+.inputForm label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #e0e0e0;
+}
+
 .inputForm input[type=number] {
   font-weight: 500;
   padding: 10px 12px;
-  border: 1px solid rgba(96, 165, 250, 0.4);
+  border: 1px solid #333;
   border-radius: 6px;
-  background-color: rgba(255, 255, 255, 0.05);
-  color: white;
+  background-color: #1a1a1a;
+  color: #e0e0e0;
   transition: all 0.2s ease;
 }
 
 .inputForm input[type=number]:focus {
-  border-color: #60a5fa;
-  background-color: rgba(255, 255, 255, 0.07);
+  border-color: #3b82f6;
+  background-color: #222;
   outline: none;
-  box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.25);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25);
 }
-
 
 .result {
   background-color: #1e1e1e;
+  border: 1px solid #333;
   border-radius: 8px;
-  padding: 1.5em 2em;
+  padding: 1.5rem;
   margin-top: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .result img {
@@ -255,28 +115,6 @@ gap: 0.5em;
   display: block;
   border-radius: 4px;
 }
-
-/* Media queries pour la responsivité */
-@media (max-width: 768px) {
-
-  header {
-    padding: 12px 16px;
-  }
-
-  h1 {
-    font-size: 1.5em;
-  }
-
-  .app-title {
-    font-size: 1.1rem;
-  }
-
-  button {
-    width: 80%;
-  }
-}
-
-
 
 .custom_dropdown {
   margin: 12px 0;
@@ -291,21 +129,28 @@ gap: 0.5em;
   cursor: pointer;
 }
 
+.custom_dropdown label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #e0e0e0;
+}
+
 .custom_dropdown .value {
-  border: 1px solid rgba(96, 165, 250, 0.4);
+  border: 1px solid #333;
   border-radius: 6px;
   padding: 10px 12px;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: #1a1a1a;
+  color: #e0e0e0;
   transition: all 0.2s ease;
 }
 
 .custom_dropdown .value:hover {
-  border-color: #60a5fa;
-  background-color: rgba(255, 255, 255, 0.07);
+  border-color: #3b82f6;
+  background-color: #222;
 }
 
 .custom_dropdown .options {
-  border: 1px solid #60a5fa;
+  border: 1px solid #3b82f6;
   border-radius: 6px;
   width: 100%;
   max-height: 250px;
@@ -314,7 +159,7 @@ gap: 0.5em;
   z-index: 10;
   background-color: #1a1a1a;
   overflow-y: auto;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .custom_dropdown .options ul {
@@ -331,28 +176,669 @@ gap: 0.5em;
   padding: 8px 12px;
   border-radius: 4px;
   transition: background-color 0.15s ease;
+  color: #e0e0e0;
 }
 
 .custom_dropdown .options ul li:hover {
-  background-color: rgba(96, 165, 250, 0.15);
+  background-color: #333;
 }
 
 .custom_dropdown .options ul .selected {
-  background-color: rgba(96, 165, 250, 0.3);
+  background-color: #3b82f6;
   color: white;
 }
 
-.result {
-  background-color: #1e1e1e;
-  border-radius: 8px;
-  padding: 1.5em 2em;
-  margin-top: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+/* Classes utilitaires Grid */
+.grid {
+  display: grid;
 }
 
-.result img {
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.gap-1 {
+  gap: 0.25rem;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.gap-3 {
+  gap: 0.75rem;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.gap-6 {
+  gap: 1.5rem;
+}
+
+.gap-8 {
+  gap: 2rem;
+}
+
+/* Classes col-span pour contrôler l'occupation des colonnes */
+.col-span-1 {
+  grid-column: span 1 / span 1;
+}
+
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+
+.col-span-3 {
+  grid-column: span 3 / span 3;
+}
+
+.col-span-4 {
+  grid-column: span 4 / span 4;
+}
+
+.col-span-full {
+  grid-column: 1 / -1;
+}
+
+/* Classes utilitaires Flexbox */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.items-stretch {
+  align-items: stretch;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
+}
+
+/* Classes utilitaires Width */
+.w-auto {
+  width: auto;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.w-screen {
+  width: 100vw;
+}
+
+.w-min {
+  width: min-content;
+}
+
+.w-max {
+  width: max-content;
+}
+
+.w-fit {
+  width: fit-content;
+}
+
+.w-1\/2 {
+  width: 50%;
+}
+
+.w-1\/3 {
+  width: 33.333333%;
+}
+
+.w-2\/3 {
+  width: 66.666667%;
+}
+
+.w-1\/4 {
+  width: 25%;
+}
+
+.w-3\/4 {
+  width: 75%;
+}
+
+/* Classes utilitaires Height */
+.h-auto {
+  height: auto;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.h-screen {
+  height: 100vh;
+}
+
+.h-min {
+  height: min-content;
+}
+
+.h-max {
+  height: max-content;
+}
+
+.h-fit {
+  height: fit-content;
+}
+
+/* Classes utilitaires Margin */
+.m-0 {
+  margin: 0px;
+}
+
+.m-1 {
+  margin: 0.25rem;
+}
+
+.m-2 {
+  margin: 0.5rem;
+}
+
+.m-3 {
+  margin: 0.75rem;
+}
+
+.m-4 {
+  margin: 1rem;
+}
+
+.m-6 {
+  margin: 1.5rem;
+}
+
+.m-8 {
+  margin: 2rem;
+}
+
+.m-auto {
   margin: auto;
-  width: 80%;
-  display: block;
-  border-radius: 4px;
+}
+
+/* Margin X (gauche + droite) */
+.mx-0 {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.mx-1 {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.mx-3 {
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+}
+
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.mx-6 {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.mx-8 {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Margin Y (haut + bas) */
+.my-0 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.my-1 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.my-3 {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.my-6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.my-8 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Margin individuelles */
+.mt-0 { margin-top: 0px; }
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-3 { margin-top: 0.75rem; }
+.mt-4 { margin-top: 1rem; }
+.mt-6 { margin-top: 1.5rem; }
+.mt-8 { margin-top: 2rem; }
+
+.mr-0 { margin-right: 0px; }
+.mr-1 { margin-right: 0.25rem; }
+.mr-2 { margin-right: 0.5rem; }
+.mr-3 { margin-right: 0.75rem; }
+.mr-4 { margin-right: 1rem; }
+.mr-6 { margin-right: 1.5rem; }
+.mr-8 { margin-right: 2rem; }
+
+.mb-0 { margin-bottom: 0px; }
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 0.75rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mb-8 { margin-bottom: 2rem; }
+
+.ml-0 { margin-left: 0px; }
+.ml-1 { margin-left: 0.25rem; }
+.ml-2 { margin-left: 0.5rem; }
+.ml-3 { margin-left: 0.75rem; }
+.ml-4 { margin-left: 1rem; }
+.ml-6 { margin-left: 1.5rem; }
+.ml-8 { margin-left: 2rem; }
+
+/* Classes utilitaires Padding */
+.p-0 {
+  padding: 0px;
+}
+
+.p-1 {
+  padding: 0.25rem;
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+.p-3 {
+  padding: 0.75rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.p-6 {
+  padding: 1.5rem;
+}
+
+.p-8 {
+  padding: 2rem;
+}
+
+/* Padding X (gauche + droite) */
+.px-0 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* Padding Y (haut + bas) */
+.py-0 {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* Padding individuelles */
+.pt-0 { padding-top: 0px; }
+.pt-1 { padding-top: 0.25rem; }
+.pt-2 { padding-top: 0.5rem; }
+.pt-3 { padding-top: 0.75rem; }
+.pt-4 { padding-top: 1rem; }
+.pt-6 { padding-top: 1.5rem; }
+.pt-8 { padding-top: 2rem; }
+
+.pr-0 { padding-right: 0px; }
+.pr-1 { padding-right: 0.25rem; }
+.pr-2 { padding-right: 0.5rem; }
+.pr-3 { padding-right: 0.75rem; }
+.pr-4 { padding-right: 1rem; }
+.pr-6 { padding-right: 1.5rem; }
+.pr-8 { padding-right: 2rem; }
+
+.pb-0 { padding-bottom: 0px; }
+.pb-1 { padding-bottom: 0.25rem; }
+.pb-2 { padding-bottom: 0.5rem; }
+.pb-3 { padding-bottom: 0.75rem; }
+.pb-4 { padding-bottom: 1rem; }
+.pb-6 { padding-bottom: 1.5rem; }
+.pb-8 { padding-bottom: 2rem; }
+
+.pl-0 { padding-left: 0px; }
+.pl-1 { padding-left: 0.25rem; }
+.pl-2 { padding-left: 0.5rem; }
+.pl-3 { padding-left: 0.75rem; }
+.pl-4 { padding-left: 1rem; }
+.pl-6 { padding-left: 1.5rem; }
+.pl-8 { padding-left: 2rem; }
+
+/* Classes utilitaires Typography */
+/* Font Weight */
+.font-thin {
+  font-weight: 100;
+}
+
+.font-extralight {
+  font-weight: 200;
+}
+
+.font-light {
+  font-weight: 300;
+}
+
+.font-normal {
+  font-weight: 400;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-extrabold {
+  font-weight: 800;
+}
+
+.font-black {
+  font-weight: 900;
+}
+
+/* Font Size */
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+/* Text Align */
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+/* Text Transform */
+.uppercase {
+  text-transform: uppercase;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.normal-case {
+  text-transform: none;
+}
+
+/* Text Decoration */
+.underline {
+  text-decoration-line: underline;
+}
+
+.overline {
+  text-decoration-line: overline;
+}
+
+.line-through {
+  text-decoration-line: line-through;
+}
+
+.no-underline {
+  text-decoration-line: none;
+}
+
+/* Font Style */
+.italic {
+  font-style: italic;
+}
+
+.not-italic {
+  font-style: normal;
+}
+
+/* Line Height */
+.leading-none {
+  line-height: 1;
+}
+
+.leading-tight {
+  line-height: 1.25;
+}
+
+.leading-snug {
+  line-height: 1.375;
+}
+
+.leading-normal {
+  line-height: 1.5;
+}
+
+.leading-relaxed {
+  line-height: 1.625;
+}
+
+.leading-loose {
+  line-height: 2;
+}
+
+/* Letter Spacing */
+.tracking-tighter {
+  letter-spacing: -0.05em;
+}
+
+.tracking-tight {
+  letter-spacing: -0.025em;
+}
+
+.tracking-normal {
+  letter-spacing: 0em;
+}
+
+.tracking-wide {
+  letter-spacing: 0.025em;
+}
+
+.tracking-wider {
+  letter-spacing: 0.05em;
+}
+
+.tracking-widest {
+  letter-spacing: 0.1em;
 }

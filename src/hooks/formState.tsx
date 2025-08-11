@@ -1,7 +1,10 @@
 import { useState } from "react";
 
-export default function useForm(initialValues: { [key: string]: any }) {
-    const [formValues, setFormValues] = useState(initialValues);
+type FormValue = string | number;
+type FormValues = { [key: string]: FormValue };
+
+export default function useForm<T extends FormValues>(initialValues: T) {
+    const [formValues, setFormValues] = useState<T>(initialValues);
   
     const handleChange = (
       e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -13,7 +16,7 @@ export default function useForm(initialValues: { [key: string]: any }) {
       }));
     };
 
-    const setValueByKey = (key: string, value: string|number) => {
+    const setValueByKey = (key: keyof T, value: FormValue) => {
       setFormValues((prevValues) => ({
         ...prevValues, [key]: value
       }))

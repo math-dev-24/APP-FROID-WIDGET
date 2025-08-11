@@ -15,7 +15,12 @@ export default function Optimum() {
 
   const goCalc = async () => {
     setLoading(true);
-    const queryParams = new URLSearchParams(formValues).toString();
+    const queryParams = new URLSearchParams(
+      Object.entries(formValues).reduce((acc, [key, value]) => {
+        acc[key] = value.toString();
+        return acc;
+      }, {} as Record<string, string>)
+    ).toString();
     try {
       const response = await fetch(
         `https://mathieub.pythonanywhere.com/v2/hp-optimum?${queryParams}`
@@ -30,7 +35,8 @@ export default function Optimum() {
   };
 
   return (
-    <div className="flex flex-col ruler">
+      <>
+    <div className="ruler grid grid-cols-2 gap-2">
       <div className="inputForm">
         <div>Puissance :</div>
         <input
@@ -79,8 +85,12 @@ export default function Optimum() {
             onChange={handleChange}
         />
       </div>
-      <button onClick={goCalc} disabled={loading}>{loading ? "Chargement..." : "Calculer"}</button>
-      {result && <div className="result text-xl">{result}</div>}
+
     </div>
+          <div className="flex flex-col gap-2 items-center w-full my-2">
+              <button onClick={goCalc} disabled={loading}>{loading ? "Chargement..." : "Calculer"}</button>
+              {result && <div className="result text-xl w-full">{result}</div>}
+          </div>
+      </>
   );
 }
