@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "App Froid",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "App Froid est dans votre navigateur. Plusieurs outils à portée de clic !",
   "icons": {
     "16": "logo.png",
