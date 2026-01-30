@@ -1,35 +1,42 @@
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
-import Home from "./pages/Home";
-import Desp from "./pages/Desp";
-import Azote from "./pages/Azote";
+import { HashRouter as Router, Routes, Route } from "react-router-dom"
+import Header from "@/components/Header"
+import ErrorBoundary from "@/components/ErrorBoundary"
+import HomePage from "@/features/home/HomePage"
+import DespPage from "@/features/desp/DespPage"
+import AzotePage from "@/features/azote/AzotePage"
+import CapteurSignalPage from "@/features/capteur-signal/CapteurSignalPage"
+import CalculDiamPage from "@/features/calcul-diam/CalculDiamPage"
+import AirDataPage from "@/features/air-data/AirDataPage"
 
 function App() {
   return (
-    <Router>
-      <div
-        style={{
-          display: "flex",
-          height: "100%",
-          flexDirection: "column",
-        }}
-      >
-        <Header />
-        <main
-          className="py-2 px-1"
-          style={{
-            flex: 1,
-            overflowY: "auto",
-          }}
-        >
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/desp" element={<Desp />} />
-            <Route path="/azote" element={<Azote />} />
-          </Routes>
-        </main>
-      </div>
-    </Router>
+    <ErrorBoundary>
+      <Router>
+        <div className="flex h-full flex-col">
+          <a
+            href="#main-content"
+            className="absolute -top-full left-4 z-50 px-4 py-2 bg-primary text-primary-foreground rounded-md transition-[top] duration-200 focus:top-4 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+          >
+            Aller au contenu principal
+          </a>
+          <Header />
+          <main
+            id="main-content"
+            className="flex flex-1 flex-col overflow-y-auto px-2 py-2 scroll-mt-4"
+            tabIndex={-1}
+          >
+            <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/desp" element={<DespPage />} />
+            <Route path="/azote" element={<AzotePage />} />
+            <Route path="/capteur-signal" element={<CapteurSignalPage />} />
+            <Route path="/calcul-diam" element={<CalculDiamPage />} />
+            <Route path="/air-data" element={<AirDataPage />} />
+            </Routes>
+          </main>
+        </div>
+      </Router>
+    </ErrorBoundary>
   );
 }
 

@@ -1,119 +1,85 @@
+import { Link } from "react-router-dom"
+import { Heart, Thermometer, Gauge, Signal, Layers, Cloud } from "lucide-react"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+
 export default function Home() {
   return (
-    <div style={{ padding: "24px" }}>
-      <div style={{ textAlign: "center", marginBottom: "24px" }}>
-        <h2
-          style={{
-            fontSize: "1.5rem",
-            fontWeight: "700",
-            marginBottom: "16px",
-            color: "#e0e0e0",
-          }}
-        >
+    <div className="p-6 space-y-6">
+      <div className="text-center space-y-2">
+        <h2 className="text-2xl font-bold tracking-tight">
           Bienvenue sur App Froid
         </h2>
-        <p
-          style={{
-            color: "#9ca3af",
-            lineHeight: "1.6",
-            marginBottom: "0",
-          }}
-        >
+        <p className="text-muted-foreground leading-relaxed max-w-md mx-auto">
           Accédez instantanément à vos outils grâce à ce widget pratique,
           disponible à tout moment dans votre navigateur !
         </p>
       </div>
 
-      <div
-        style={{
-          backgroundColor: "#1e1e1e",
-          border: "1px solid #333",
-          borderRadius: "8px",
-          padding: "16px",
-          marginBottom: "24px",
-        }}
-      >
-        <h3
-          style={{
-            fontWeight: "600",
-            marginBottom: "12px",
-            color: "#e0e0e0",
-          }}
-        >
-          Outils disponibles :
-        </h3>
-
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "8px",
-            fontSize: "0.875rem",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            <div
-              style={{
-                width: "8px",
-                height: "8px",
-                backgroundColor: "#3b82f6",
-                borderRadius: "50%",
-              }}
-            ></div>
-            <span style={{ color: "#9ca3af" }}>Test Azote</span>
+      <Card>
+        <CardHeader className="pb-2">
+          <CardTitle className="text-base">Outils disponibles</CardTitle>
+          <CardDescription>Calculs et références pour le froid</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <div className="grid grid-cols-2 gap-3">
+            <Link to="/azote" className="block group">
+              <div className="flex items-center gap-3 p-3 rounded-lg border border-border bg-card transition-all duration-200 hover:bg-accent/60 hover:border-primary/30 hover:shadow-md hover:-translate-y-0.5">
+                <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary/10 transition-colors duration-200 group-hover:bg-primary/20">
+                  <Gauge className="h-4 w-4 text-primary transition-transform duration-200 group-hover:scale-110" />
+                </div>
+                <span className="font-medium text-sm">Test Azote</span>
+              </div>
+            </Link>
+            <Link to="/desp" className="block group">
+              <div className="flex items-center gap-3 p-3 rounded-lg border border-border bg-card transition-all duration-200 hover:bg-accent/60 hover:border-primary/30 hover:shadow-md hover:-translate-y-0.5">
+                <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary/10 transition-colors duration-200 group-hover:bg-primary/20">
+                  <Thermometer className="h-4 w-4 text-primary transition-transform duration-200 group-hover:scale-110" />
+                </div>
+                <span className="font-medium text-sm">DESP</span>
+              </div>
+            </Link>
+            <Link to="/capteur-signal" className="block group">
+              <div className="flex items-center gap-3 p-3 rounded-lg border border-border bg-card transition-all duration-200 hover:bg-accent/60 hover:border-primary/30 hover:shadow-md hover:-translate-y-0.5">
+                <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary/10 transition-colors duration-200 group-hover:bg-primary/20">
+                  <Signal className="h-4 w-4 text-primary transition-transform duration-200 group-hover:scale-110" />
+                </div>
+                <span className="font-medium text-sm">Signal Capteur</span>
+              </div>
+            </Link>
+            <Link to="/calcul-diam" className="block group">
+              <div className="flex items-center gap-3 p-3 rounded-lg border border-border bg-card transition-all duration-200 hover:bg-accent/60 hover:border-primary/30 hover:shadow-md hover:-translate-y-0.5">
+                <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary/10 transition-colors duration-200 group-hover:bg-primary/20">
+                  <Layers className="h-4 w-4 text-primary transition-transform duration-200 group-hover:scale-110" />
+                </div>
+                <span className="font-medium text-sm">Calcul Diamètre</span>
+              </div>
+            </Link>
+            <Link to="/air-data" className="block group">
+              <div className="flex items-center gap-3 p-3 rounded-lg border border-border bg-card transition-all duration-200 hover:bg-accent/60 hover:border-primary/30 hover:shadow-md hover:-translate-y-0.5">
+                <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary/10 transition-colors duration-200 group-hover:bg-primary/20">
+                  <Cloud className="h-4 w-4 text-primary transition-transform duration-200 group-hover:scale-110" />
+                </div>
+                <span className="font-medium text-sm">Propriétés Air</span>
+              </div>
+            </Link>
           </div>
+        </CardContent>
+      </Card>
 
-          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            <div
-              style={{
-                width: "8px",
-                height: "8px",
-                backgroundColor: "#3b82f6",
-                borderRadius: "50%",
-              }}
-            ></div>
-            <span style={{ color: "#9ca3af" }}>DESP</span>
-          </div>
-        </div>
-      </div>
-
-      <div style={{ textAlign: "center" }}>
-        <a
-          href="https://buymeacoffee.com/mathieub"
-          target="_blank"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "8px",
-            padding: "8px 16px",
-            backgroundColor: "#3b82f6",
-            color: "white",
-            borderRadius: "6px",
-            textDecoration: "none",
-            fontSize: "0.875rem",
-            fontWeight: "500",
-            transition: "background-color 0.2s ease",
-          }}
-          onMouseEnter={(e) => {
-            (e.target as HTMLElement).style.backgroundColor = "#2563eb";
-          }}
-          onMouseLeave={(e) => {
-            (e.target as HTMLElement).style.backgroundColor = "#3b82f6";
-          }}
-        >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
+      <div className="text-center">
+        <Button asChild variant="default" size="sm">
+          <a
+            href="https://buymeacoffee.com/mathieub"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 no-underline"
           >
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-          </svg>
-          Soutenir le projet
-        </a>
+            <Heart className="h-4 w-4" />
+            Soutenir le projet
+          </a>
+        </Button>
       </div>
     </div>
-  );
+  )
 }

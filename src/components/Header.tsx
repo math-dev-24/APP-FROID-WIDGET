@@ -1,125 +1,70 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom"
+import { ExternalLink } from "lucide-react"
+import { ThemeToggle } from "@/components/theme-toggle"
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 
 export default function Header() {
   return (
-    <header
-      style={{
-        borderBottom: "1px solid #333",
-        backgroundColor: "#1a1a1a",
-        padding: "16px",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "16px",
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <Link
-            to="/"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "12px",
-              textDecoration: "none",
-            }}
-          >
+    <header className="border-b border-border bg-card/50 backdrop-blur-sm px-4 py-3">
+      <div className="flex flex-col gap-3">
+        <div className="flex items-center justify-between">
+          <Link to="/" className="flex items-center gap-2.5 no-underline group">
             <img
               src="logo.png"
               alt="App Froid Logo"
-              style={{ height: "32px", width: "32px" }}
+              className="h-8 w-8 rounded-lg"
             />
-            <span
-              style={{
-                fontSize: "1.125rem",
-                fontWeight: "600",
-                color: "#60a5fa",
-              }}
-            >
+            <span className="text-lg font-semibold text-primary group-hover:text-primary/90 transition-colors">
               App Froid
             </span>
           </Link>
+          <ThemeToggle />
         </div>
 
-        <nav
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-          }}
-        >
+        <nav className="flex items-center gap-1 flex-wrap">
           <a
             target="_blank"
+            rel="noopener noreferrer"
             href="https://app-froid.mathieu-busse.dev"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "6px",
-              fontSize: "0.875rem",
-              color: "#9ca3af",
-              marginRight: "16px",
-              paddingRight: "16px",
-              borderRight: "1px solid #333",
-              textDecoration: "none",
-            }}
+            aria-label="Ouvrir App-Froid dans un nouvel onglet"
+            className="flex items-center gap-1.5 text-sm text-muted-foreground mr-3 pr-3 border-r border-border no-underline hover:text-foreground transition-colors"
           >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
+            <ExternalLink className="h-3.5 w-3.5" aria-hidden />
             App-Froid
           </a>
 
           <NavLink to="/">Accueil</NavLink>
           <NavLink to="/azote">Test Azote</NavLink>
           <NavLink to="/desp">DESP</NavLink>
+          <NavLink to="/capteur-signal">Signal Capteur</NavLink>
+          <NavLink to="/calcul-diam">Calcul Diamètre</NavLink>
+          <NavLink to="/air-data">Air</NavLink>
         </nav>
       </div>
     </header>
-  );
+  )
 }
 
 const NavLink = ({ to, children }: { to: string; children: string }) => {
-  const location = useLocation();
-  const isActive = location.pathname === to;
+  const location = useLocation()
+  const isActive = location.pathname === to
 
   return (
-    <Link
-      to={to}
-      style={{
-        padding: "6px 12px",
-        fontSize: "0.875rem",
-        fontWeight: "500",
-        borderRadius: "6px",
-        transition: "all 0.2s ease",
-        textDecoration: "none",
-        backgroundColor: isActive ? "#3b82f6" : "transparent",
-        color: isActive ? "white" : "#9ca3af",
-      }}
-      onMouseEnter={(e) => {
-        if (!isActive) {
-          (e.target as HTMLElement).style.backgroundColor = "#333";
-          (e.target as HTMLElement).style.color = "#e0e0e0";
-        }
-      }}
-      onMouseLeave={(e) => {
-        if (!isActive) {
-          (e.target as HTMLElement).style.backgroundColor = "transparent";
-          (e.target as HTMLElement).style.color = "#9ca3af";
-        }
-      }}
+    <Button
+      variant={isActive ? "default" : "ghost"}
+      size="sm"
+      asChild
     >
-      {children}
-    </Link>
-  );
-};
+      <Link
+        to={to}
+        className={cn(
+          "no-underline",
+          !isActive && "text-muted-foreground hover:text-foreground"
+        )}
+      >
+        {children}
+      </Link>
+    </Button>
+  )
+}
