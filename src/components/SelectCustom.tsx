@@ -23,7 +23,7 @@ export default function SelectCustom({
 }: SelectProp) {
   const selectId = label.replace(/\s+/g, "-").toLowerCase()
   return (
-    <div className="flex flex-col gap-2 my-3 w-full">
+    <div className="flex flex-col gap-1 my-1 w-full">
       <Label htmlFor={selectId}>{label}</Label>
       <Select value={value} onValueChange={setValue}>
         <SelectTrigger id={selectId} className="bg-background" aria-label={label}>

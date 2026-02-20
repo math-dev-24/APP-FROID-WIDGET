@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom"
-import { ExternalLink } from "lucide-react"
+import { ExternalLink, Settings } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
@@ -19,7 +19,14 @@ export default function Header() {
               App Froid
             </span>
           </Link>
-          <ThemeToggle />
+          <div className="flex items-center gap-2">
+            <Button variant="ghost" size="sm" asChild>
+              <Link to="/settings" aria-label="Réglages">
+                <Settings className="h-4 w-4" />
+              </Link>
+            </Button>
+            <ThemeToggle />
+          </div>
         </div>
 
         <nav className="flex items-center gap-1 flex-wrap">
@@ -40,6 +47,8 @@ export default function Header() {
           <NavLink to="/capteur-signal">Signal Capteur</NavLink>
           <NavLink to="/calcul-diam">Calcul Diamètre</NavLink>
           <NavLink to="/air-data">Air</NavLink>
+          <NavLink to="/ruler">Règle</NavLink>
+          <NavLink to="/simple">Simple</NavLink>
         </nav>
       </div>
     </header>

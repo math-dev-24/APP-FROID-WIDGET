@@ -1,18 +1,25 @@
-/**
- * Formate un nombre avec Intl.NumberFormat pour la locale française.
- * Utilise tabular-nums pour un alignement cohérent des colonnes.
- */
-const numberFormatter = new Intl.NumberFormat("fr-FR", {
+const defaultFormatter = new Intl.NumberFormat("fr-FR", {
   minimumFractionDigits: 0,
   maximumFractionDigits: 4,
 })
 
-export function formatNumber(value: number, decimals?: number): string {
-  if (decimals !== undefined) {
-    return new Intl.NumberFormat("fr-FR", {
+const formatterCache = new Map<number, Intl.NumberFormat>()
+
+function getFormatter(decimals: number): Intl.NumberFormat {
+  let fmt = formatterCache.get(decimals)
+  if (!fmt) {
+    fmt = new Intl.NumberFormat("fr-FR", {
       minimumFractionDigits: decimals,
       maximumFractionDigits: decimals,
-    }).format(value)
+    })
+    formatterCache.set(decimals, fmt)
   }
-  return numberFormatter.format(value)
+  return fmt
+}
+
+export function formatNumber(value: number, decimals?: number): string {
+  if (decimals !== undefined) {
+    return getFormatter(decimals).format(value)
+  }
+  return defaultFormatter.format(value)
 }

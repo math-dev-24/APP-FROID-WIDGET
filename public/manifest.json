@@ -11,5 +11,13 @@
   "action": {
     "default_popup": "index.html",
     "default_icon": "logo.png"
-  }
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": [],
+  "host_permissions": [
+    "https://rust-api-ovh.mathieu-busse.dev/*"
+  ]
 }

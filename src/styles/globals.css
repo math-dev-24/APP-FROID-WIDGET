@@ -97,59 +97,7 @@
 }
 
 @layer components {
-  .ruler {
-    @apply bg-card border border-border rounded-lg p-5 m-0;
-  }
-  .inputForm {
-    @apply my-3 flex flex-col gap-2;
-  }
-  .inputForm label {
-    @apply text-sm font-medium text-foreground;
-  }
-  .inputForm input[type="number"] {
-    @apply font-medium px-3 py-2.5 border border-border rounded-md bg-secondary text-foreground transition-all;
-  }
-  .inputForm input[type="number"]:focus {
-    @apply border-primary outline-none ring-2 ring-primary/25;
-  }
-  .inputForm input[type="number"]:focus-visible {
-    @apply ring-2 ring-primary/25;
-  }
   .tabular-nums {
     font-variant-numeric: tabular-nums;
   }
-  .result {
-    @apply bg-card border border-border rounded-lg p-6 mt-4;
-  }
-  .result img {
-    @apply mx-auto w-[80%] block rounded;
-  }
-  .custom_dropdown {
-    @apply my-3 flex flex-col w-full gap-2 relative;
-  }
-  .custom_dropdown .value {
-    @apply border border-border rounded-md px-3 py-2.5 bg-secondary text-foreground transition-all cursor-pointer;
-  }
-  .custom_dropdown .value:hover {
-    @apply border-primary;
-  }
-  .custom_dropdown label {
-    @apply text-sm font-medium text-foreground;
-  }
-  .custom_dropdown .options {
-    @apply border border-primary rounded-md w-full max-h-[250px] absolute z-10 bg-secondary overflow-y-auto shadow-lg;
-    top: calc(100% + 4px);
-  }
-  .custom_dropdown .options ul {
-    @apply flex flex-col list-none m-0 p-1;
-  }
-  .custom_dropdown .options ul li {
-    @apply m-0 cursor-pointer px-3 py-2 rounded transition-colors text-foreground;
-  }
-  .custom_dropdown .options ul li:hover {
-    @apply bg-muted;
-  }
-  .custom_dropdown .options ul .selected {
-    @apply bg-primary text-primary-foreground;
-  }
-} 
+}

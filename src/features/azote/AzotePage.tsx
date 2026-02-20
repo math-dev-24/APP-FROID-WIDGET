@@ -1,7 +1,7 @@
 import { useMemo } from "react"
 import { Info, Gauge, SlidersHorizontal, Box } from "lucide-react"
 import InputCustom from "@/components/InputCustom"
-import useForm from "@/hooks/formState"
+import useForm from "@/hooks/useForm"
 import { getPFinal } from "@/features/azote/azote.utils"
 import StatusBadge from "@/components/StatusBadge"
 import StatusMessage from "@/components/StatusMessage"

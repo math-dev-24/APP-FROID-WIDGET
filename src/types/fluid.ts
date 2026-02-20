@@ -7,31 +7,23 @@ type LinksType = {
   url: string
 }
 
-interface BaseFluidInterface {
+export interface Fluid {
   name: string
   ref_name: string
   gwp: number
   odp: number
   group: 1 | 2
+  classification: string
   critical_pres: number
   critical_temp: number
   triple_temp: number
   triple_pres: number
   can_simulate: boolean
-  is_mix: boolean
+  lfl?: { lower: number; upper: number } | null
+  description?: string | null
   links: LinksType[]
-  regulation: RegulationType
+  is_mix?: boolean
+  regulation?: RegulationType
 }
 
-export interface FluidsNonFlammableInterface extends BaseFluidInterface {
-  classification: "A1" | "B1"
-}
-
-export interface FluidsInflammableInterface extends BaseFluidInterface {
-  classification: "A2" | "A2L" | "A3" | "B2" | "B2L" | "B3"
-  lfl: { lower: number; upper: number }
-  description: string
-}
-
-export type Fluid = FluidsNonFlammableInterface | FluidsInflammableInterface
 export type FLUIDS = Fluid[]

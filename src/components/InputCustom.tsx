@@ -31,7 +31,7 @@ export default function InputCustom(props: InputCustomProps) {
   const hasError = !!props.error;
 
   return (
-    <div className={cn("flex flex-col gap-2 my-3")}>
+    <div className={cn("flex flex-col gap-1 my-1")}>
       <Label htmlFor={inputId}>{props.label}</Label>
       <div className="relative">
         <Input

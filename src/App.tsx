@@ -7,6 +7,9 @@ import AzotePage from "@/features/azote/AzotePage"
 import CapteurSignalPage from "@/features/capteur-signal/CapteurSignalPage"
 import CalculDiamPage from "@/features/calcul-diam/CalculDiamPage"
 import AirDataPage from "@/features/air-data/AirDataPage"
+import RulerPage from "@/features/ruler/RulerPage"
+import SimplePage from "@/features/simple/SimplePage"
+import SettingsPage from "@/features/settings/SettingsPage"
 
 function App() {
   return (
@@ -26,18 +29,21 @@ function App() {
             tabIndex={-1}
           >
             <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/desp" element={<DespPage />} />
-            <Route path="/azote" element={<AzotePage />} />
-            <Route path="/capteur-signal" element={<CapteurSignalPage />} />
-            <Route path="/calcul-diam" element={<CalculDiamPage />} />
-            <Route path="/air-data" element={<AirDataPage />} />
+              <Route path="/" element={<HomePage />} />
+              <Route path="/desp" element={<DespPage />} />
+              <Route path="/azote" element={<AzotePage />} />
+              <Route path="/capteur-signal" element={<CapteurSignalPage />} />
+              <Route path="/calcul-diam" element={<CalculDiamPage />} />
+              <Route path="/air-data" element={<AirDataPage />} />
+              <Route path="/ruler" element={<RulerPage />} />
+              <Route path="/simple" element={<SimplePage />} />
+              <Route path="/settings" element={<SettingsPage />} />
             </Routes>
           </main>
         </div>
       </Router>
     </ErrorBoundary>
-  );
+  )
 }
 
-export default App;
+export default App
